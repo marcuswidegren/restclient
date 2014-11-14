@@ -39,10 +39,8 @@ public final class Account {
         transactions.add(transaction);
     }
 
-    public Collection<Transaction> getTransactions() {
-        List<Transaction> trList = new ArrayList<>(transactions);
-        Collections.sort(trList);
-        return trList;
+    public Set<Transaction> getTransactions() {
+        return transactions;
     }
 
     @Override

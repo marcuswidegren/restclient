@@ -7,11 +7,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.joda.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.joda.ser.LocalDateTimeSerializer;
 
+import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public final class Transaction implements Comparable<Transaction> {
 
@@ -42,6 +44,9 @@ public final class Transaction implements Comparable<Transaction> {
         return new Transaction(amount);
     }
 
+    public static Transaction newTransactionInEuros(BigDecimal amount) {
+        return of(Money.of(CurrencyUnit.EUR, amount));
+    }
 
     @JsonDeserialize
     public long getId() {

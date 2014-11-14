@@ -7,10 +7,10 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.annotation.processing.SupportedAnnotationTypes;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Random;
@@ -61,7 +61,7 @@ public class IntegrationTest {
         restClient.deleteTransaction(account, addedTransaction);
         Account updatedAccount = restClient.findExistingAccount(account);
 
-        assertTrue(!updatedAccount.getTransactions().contains(addedTransaction));
+        assertFalse(updatedAccount.getTransactions().contains(addedTransaction));
     }
 
     @Test
