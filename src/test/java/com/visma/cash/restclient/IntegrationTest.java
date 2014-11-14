@@ -7,7 +7,6 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -90,5 +89,21 @@ public class IntegrationTest {
         } catch(HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+    }
+
+    @Test
+    public void standardCategoryShouldBeMisc() {
+        final String MISC = "Misc";
+        Transaction transaction = restClient.addTransaction(account, Transaction.of(ONE_EURO));
+
+        assertEquals(transaction.getCategory(), MISC);
+    }
+
+    @Test
+    public void categoryShouldBeSaved() {
+        final String CATEGORY = "other category";
+        Transaction transaction = restClient.addTransaction(account, Transaction.newTransactionInEuros(BigDecimal.ONE, CATEGORY));
+
+        assertEquals(transaction.getCategory(), CATEGORY);
     }
 }
