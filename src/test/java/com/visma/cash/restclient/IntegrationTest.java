@@ -106,4 +106,6 @@ public class IntegrationTest {
 
         assertEquals(transaction.getCategory(), CATEGORY);
     }
+
+
 }

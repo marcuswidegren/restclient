@@ -49,6 +49,12 @@
             <artifactId>testng</artifactId>
             <version>6.8.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
